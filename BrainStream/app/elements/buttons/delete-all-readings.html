@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <!--
    @license
    Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -9,7 +7,6 @@
    Code distributed by Google as part of the polymer project is also
    subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
    -->
->>>>>>> origin/final-dev
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <dom-module id="delete-all-readings">
     <template>
@@ -18,9 +15,11 @@
             :host {
                 display: block;
             }
-            #modal{
+
+            #modal {
                 width: 350px;
             }
+
             .containerdiv {
                 @apply(--layout-horizontal);
                 height: 100%;
@@ -28,23 +27,27 @@
                 padding-right: 0px;
                 font-size: 12px;
             }
-            #genpw{
+
+            #genpw {
                 margin-top: 16px;
             }
+
             .flexchild {
                 @apply(--layout-flex);
             }
-            #genderdrop{
+
+            #genderdrop {
                 @apply(--layout-horizontal);
             }
         </style>
-        <paper-icon-button hidden$="{{compute(ishidden)}}" data-dialog="modal" icon="icons:cancel" on-click="deleteFormClickHandler"></paper-icon-button>
+        <paper-icon-button hidden$="{{compute(ishidden)}}" data-dialog="modal" icon="icons:cancel"
+                           on-click="deleteFormClickHandler"></paper-icon-button>
         <paper-dialog id="deleteDialog" modal>
             <h1>Delete</h1>
 
             <h2>Are you sure you want to delete all readings from this patient?</h2>
 
-            <paper-button raised on-tap="_nativeSubmit" >
+            <paper-button raised on-tap="_nativeSubmit">
                 <paper-spinner id="spinner" hidden></paper-spinner>
                 Delete
             </paper-button>
@@ -54,17 +57,10 @@
         </paper-dialog>
     </template>
     <script>
-        (function() {
+        (function () {
             'use strict';
-<<<<<<< HEAD
             Polymer({
                 is: 'delete-all-readings',
-=======
-
-            Polymer({
-                is: 'delete-all-readings',
-
->>>>>>> origin/final-dev
                 properties: {
                     reading: {
                         type: Object,
@@ -79,92 +75,69 @@
                         value: true
                     }
                 },
-<<<<<<< HEAD
-                _nativeSubmit: function(event) {
-                    var self = this;
-=======
 
-                _nativeSubmit: function(event) {
+                _nativeSubmit: function (event) {
                     var self = this;
-
->>>>>>> origin/final-dev
-                    var onDeleted = function(error) {
-                        if(error) {
+                    var onDeleted = function (error) {
+                        if (error) {
                             alert('An error occurred while deleting the reading!');
                         } else {
                             // Close the modal
                             self.$.deleteDialog.close();
                         }
                     };
-<<<<<<< HEAD
-                    var readingRef; 
+
+                    var readingRef;
                     var ref = new Firebase("https://brainlight.firebaseio.com/leiturasinfo");
                     var refInfoDelete;
-                //    alert(self.reading);
-                    var patientToDeleteHistoric;
-=======
-
-                    var readingRef; 
-                    var ref = new Firebase("https://brainlight.firebaseio.com/leiturasinfo");
-                    var refInfoDelete;
-
-                //    alert(self.reading);
-
                     var patientToDeleteHistoric;
 
->>>>>>> origin/final-dev
-                       ref.on("value", function (snapshot) {
-                            snapshot.forEach(function (childSnapshot) {
-                                if (childSnapshot.val().Leitura == self.reading) {
-                                        patientToDeleteHistoric = childSnapshot.val().Patient;
-                                }
-                            });
-                            snapshot.forEach(function (childSnapshot) {
-                                if (childSnapshot.val().Patient == patientToDeleteHistoric) {
-                                        refInfoDelete = new Firebase("https://brainlight.firebaseio.com/leiturasinfo/" + childSnapshot.key());
-                                        //alert(refInfoDelete);
-                                        readingRef = new Firebase("https://brainlight.firebaseio.com/leituras/" + childSnapshot.val().Leitura); 
-                                        //alert(readingRef);
-                                        refInfoDelete.remove(onDeleted);
-                                        readingRef.remove(onDeleted);
-                                }
-                            });
+
+                    ref.on("value", function (snapshot) {
+                        snapshot.forEach(function (childSnapshot) {
+                            if (childSnapshot.val().Leitura == self.reading) {
+                                patientToDeleteHistoric = childSnapshot.val().Patient;
+                            }
                         });
-                },
-<<<<<<< HEAD
-                deleteFormClickHandler: function(e) {
-                   this.$.deleteDialog.toggle();
-                },
-=======
 
-                deleteFormClickHandler: function(e) {
-                   this.$.deleteDialog.toggle();
-                },
 
->>>>>>> origin/final-dev
-                ready: function() {
+                        snapshot.forEach(function (childSnapshot) {
+                            if (childSnapshot.val().Patient == patientToDeleteHistoric) {
+                                refInfoDelete = new Firebase("https://brainlight.firebaseio.com/leiturasinfo/" + childSnapshot.key());
+                                readingRef = new Firebase("https://brainlight.firebaseio.com/leituras/" + childSnapshot.val().Leitura);
+                                refInfoDelete.remove(onDeleted);
+                                readingRef.remove(onDeleted);
+                            }
+                        });
+                    });
+                },
+                deleteFormClickHandler: function (e) {
+                    this.$.deleteDialog.toggle();
+                },
+                ready: function () {
                     var self = this;
                     var readingdef = false;
-                    addEventListener('selected-hist', function(reading) {
-                        self.reading = reading.detail;
-                        if(!self.readingdef){
+                    addEventListener('selected-hist-emotiv', function (defs) {
+                        self.reading = defs.detail[1];
+                        if (!readingdef) {
                             self.toggle();
-                            self.readingdef = true;
+                            readingdef = true;
+                        }
+                    });
+
+                    addEventListener('selected-hist', function (reading) {
+                        self.reading = reading.detail;
+                        if (!readingdef) {
+                            self.toggle();
+                            readingdef = true;
                         }
                     });
                 },
-<<<<<<< HEAD
-                compute: function() {
-                    return this.ishidden;
-                },
-=======
-
-                compute: function() {
+                compute: function () {
                     return this.ishidden;
                 },
 
->>>>>>> origin/final-dev
-                toggle: function() {
+                toggle: function () {
                     this.ishidden = !this.ishidden;
                 }
             });

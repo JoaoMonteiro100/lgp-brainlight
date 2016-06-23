@@ -85,37 +85,38 @@
                     };
 
                     var userRef = new Firebase(app.userURL(self.user));
-                        
-                   userRef.on("value",function(snapshot){
+
+                    userRef.on("value",function(snapshot){
                         var user = snapshot.val();
 
                         if(user != null) {
                             if(user.group1) {
-                                var groupRef = new Firebase(app.location + "/groups/group1/members/" + self.user.__firebaseKey__);
-                                groupRef.remove(onDeleted);                        
+                                var groupRef = new Firebase(app.location + "/groups/group1/members/" + self.user);
+                                groupRef.remove(onDeleted);
                             }
                             else if(user.group2){
-                                var groupRef = new Firebase(app.location + "/groups/group2/members/" + self.user.__firebaseKey__);
-                                groupRef.remove(onDeleted);                        
+                                var groupRef = new Firebase(app.location + "/groups/group2/members/" + self.user);
+                                groupRef.remove(onDeleted);
                             }
                             else  if(user.group3){
-                                var groupRef = new Firebase(app.location + "/groups/group3/members/" + self.user.__firebaseKey__);
-                                groupRef.remove(onDeleted);                        
+                                var groupRef = new Firebase(app.location + "/groups/group3/members/" + self.user);
+                                groupRef.remove(onDeleted);
                             }
                         }
                     });
+                    //alert(userRef);
                     userRef.remove(onDeleted);
                 },
 
                 deleteFormClickHandler: function(e) {
-                   this.$.deleteDialog.toggle();
+                    this.$.deleteDialog.toggle();
                 },
 
                 exists: function(a) {
                     if(a)
-                      return true;
+                        return true;
                     else
-                      return false;
+                        return false;
                 },
 
                 ready: function() {

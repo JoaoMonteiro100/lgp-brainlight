@@ -88,13 +88,11 @@
     app.usersLocation = 'https://brainlight.firebaseio.com/users';
     app.requestsLocation = 'https://brainlight.firebaseio.com/requests';
     app.readingLocation = 'https://brainlight.firebaseio.com/leiturasinfo';
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/final-dev
+    app.firebaseRef = new Firebase(app.location);
+    app.authData = app.firebaseRef.getAuth();
 
     app.userURL = function(userID) {
-        //return app.location + "/users/" + userID;
         return app.location + "/users/" + userID;
     };
 
@@ -106,22 +104,16 @@
          return app.location + "/leiturasinfo/" + readingID;
      };
     
-      app.readingURL = function(readingID) {
-        return app.location + "/leiturasinfo/" + readingID;
-    };
-    
-
-
 
     // Sign out user
     app.signOut = function () {
         this.$.data.signOut();
     };
 
+
     // Sign in user
     app.signIn = function (e) {
         this.$.data.signIn(e.detail.params);
-        var pages = document.getElementById('pages');
         //pages.selectNext();
     };
 

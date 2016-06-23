@@ -38,13 +38,13 @@
         <paper-icon-button data-dialog="modal" icon="icons:add" on-click="clickHandler"></paper-icon-button>
         <paper-dialog id="newPacientDialog" modal>
             <h1>Add new Patient</h1>
-                <firebase-collection
+            <firebase-collection
                     order-by-child="groups/group2"
                     order-value-type="boolean"
                     equal-to="true"
                     location="https://brainlight.firebaseio.com/users"
                     data="{{users}}">
-                </firebase-collection>
+            </firebase-collection>
             <paper-dropdown-menu label="Doctor associated" id="doctorAssociated">
                 <paper-listbox  class="dropdown-content" selected="{{myChoice}}">
                     <template is="dom-repeat" items="[[users]]" as="usr">
@@ -112,6 +112,7 @@
                         //picture: this.user.google.cachedUserProfile.picture,
                         number: this.$.unumber.value,
                         gender: this.$.genderdrop.value,
+                        mail: this.$unumber.value + "@brainstream.com",
                         historicDays: 120,
                         groups: {
                             group3: true
