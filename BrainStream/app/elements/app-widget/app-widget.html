@@ -29,60 +29,61 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../elements/buttons/delete-reading.html">
 
 <dom-module id="app-widget">
-  <template>
-    <style include="shared-styles">
+    <template>
+        <style include="shared-styles">
 
-    .containerdiv {
-        @apply(--layout-horizontal);
-        height: 100%;
-        padding-left: 18px;
-        padding-right: 0px;
-        font-size: 12px;
-      }
-      .flexchild {
-        @apply(--layout-flex);
-      }
-      hr {
-          display: block;
-          margin:0;
-          border-style: inset;
-          border-width: 1px;
-          background-color: #ffffff;
+            .containerdiv {
+                @apply(--layout-horizontal);
+                height: 100%;
+                padding-left: 18px;
+                padding-right: 0px;
+                font-size: 12px;
+            }
 
-      }
-      #buttons{
-        display: inherit;
-      }
-    </style>
-    <paper-material class="widget" elevation="1">
+            .flexchild {
+                @apply(--layout-flex);
+            }
 
-        <div class="containerdiv">
+            hr {
+                display: block;
+                margin: 0;
+                border-style: inset;
+                border-width: 1px;
+                background-color: #ffffff;
 
-      <h3>{{ widget.title }} </h3>
-      <div class="flexchild" ></div>
-    <div id="buttons"></div>
-    </div>
-    <hr>
-      <div id="content"></div>
-    </paper-material>
-  </template>
+            }
 
-  <script>
-    (function() {
-      'use strict';
-      Polymer({
-        is: 'app-widget',
-        ready: function(){
-          var i;
-          var dynamicEl = document.createElement(this.widget.component);
-          this.$.content.appendChild(dynamicEl);
-          for (i = 0; i < this.widget.buttons.length; i++) {
-            var dynamicButton = document.createElement(this.widget.buttons[i].button);
-            this.$.buttons.appendChild(dynamicButton);
-          }
-        }
-      });
-    })();
-  </script>
+            #buttons {
+                display: inherit;
+            }
+        </style>
+        <paper-material class="widget" elevation="1">
+            <div class="containerdiv">
+                <h3>{{ widget.title }} </h3>
+                <div class="flexchild"></div>
+                <div id="buttons"></div>
+            </div>
+            <hr>
+            <div id="content"></div>
+        </paper-material>
+    </template>
+
+    <script>
+        (function () {
+            'use strict';
+            Polymer({
+                is: 'app-widget',
+                ready: function () {
+                    var i;
+                    var dynamicEl = document.createElement(this.widget.component);
+                    this.$.content.appendChild(dynamicEl);
+                    for (i = 0; i < this.widget.buttons.length; i++) {
+                        var dynamicButton = document.createElement(this.widget.buttons[i].button);
+                        this.$.buttons.appendChild(dynamicButton);
+                    }
+                }
+            });
+        })();
+    </script>
 
 </dom-module>

@@ -12,120 +12,137 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
 <dom-module id="app-admin-menu">
-  <template>
-  <style include="shared-styles"></style>
-<style>
-  iron-icon {
-    margin-right: 33px;
-    opacity: 0.54;
-  }
-  .iron-selected {
-    color: var(--default-primary-color);
-  }
-  a {
-    text-decoration: none;
-    color: var(--menu-link-color);
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-direction: row;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    font-family: 'Roboto', 'Noto', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 24px;
-    min-height: 48px;
-    padding: 0 16px;
-    width: 255px;
-    white-space: nowrap;
-    box-sizing: border-box;
-  }
-  a[hide] {
-    display: none;
-  }
-  paper-submenu paper-item {
-    font-size: 14px;
-    cursor: pointer;
-    outline: none;
-    white-space: nowrap;
-    width: 255px;
-    box-sizing: border-box;
-    @apply(--layout);
-    @apply(--layout-horizontal);
-  }
-  .arow-down {
-    margin-right: 0;
-  }
-    paper-menu{
-    height: 97%;
-  }
-  paper-submenu paper-menu {
-    background: var(--drawer-submenu-background);
-    padding: 0;
-    height: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
-  }
-  paper-submenu .submenu-expanded + paper-menu {
-    height: auto;
-    max-height: 300px;
-  }
+    <template>
+        <style include="shared-styles"></style>
+        <style>
+            iron-icon {
+                margin-right: 33px;
+                opacity: 0.54;
+            }
 
-  .adminPhoto {
-      text-align: center;
-  }
+            .iron-selected {
+                color: var(--default-primary-color);
+            }
 
-  .adminPhoto img {
-    width: 183px;
-    height: 177px;
-    display: block;
-    margin-top: 20px;
-  }
+            a {
+                text-decoration: none;
+                color: var(--menu-link-color);
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -ms-flex-direction: row;
+                -webkit-flex-direction: row;
+                flex-direction: row;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+                font-family: 'Roboto', 'Noto', sans-serif;
+                -webkit-font-smoothing: antialiased;
+                text-rendering: optimizeLegibility;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 24px;
+                min-height: 48px;
+                padding: 0 16px;
+                width: 255px;
+                white-space: nowrap;
+                box-sizing: border-box;
+            }
 
-    </style>
-    <paper-menu class="list" attr-for-selected="data-route" selected="{{params.page}}"> 
-    <a ata-route="users" href="/dashboardAdmin/users" on-click="onDataRouteClick"> 
-      <div  class="adminPhoto"> 
-        <img src="../../images/pic.png"/>
-        <h2>Administrator</h2>
-      </div>  
-    </a>
-     <a data-route="users" href="/dashboardAdmin/users" on-click="onDataRouteClick">
-       <iron-icon icon="dashboard"></iron-icon>
-       <span>Users</span>
-     </a>
-     <a data-route="transfers" href="/dashboardAdmin/transfers" on-click="onDataRouteClick">
-       <iron-icon icon="chrome-reader-mode"></iron-icon>
-       <span>Transfers</span>
-     </a>
-     <a data-route="settings" href="/dashboardAdmin/settings" on-click="onDataRouteClick">
-       <iron-icon icon="inbox"></iron-icon>
-       <span>Settings</span>
-     </a>
-   </paper-menu>
-  </template>
-  <script>
-  (function() {
-    'use strict';
+            a[hide] {
+                display: none;
+            }
 
-    Polymer({
-      is: 'app-admin-menu',
+            paper-submenu paper-item {
+                font-size: 14px;
+                cursor: pointer;
+                outline: none;
+                white-space: nowrap;
+                width: 255px;
+                box-sizing: border-box;
+                @apply(--layout);
+                @apply(--layout-horizontal);
+            }
 
-      properties: {
-        foo: {
-          type: String,
-          value: 'app-admin-menu',
-          notify: true
-        }
-      }
-    });
-  })();
-  </script>
+            .arow-down {
+                margin-right: 0;
+            }
+
+            paper-menu {
+                height: 97%;
+            }
+
+            paper-submenu paper-menu {
+                background: var(--drawer-submenu-background);
+                padding: 0;
+                height: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-in-out;
+            }
+
+            paper-submenu .submenu-expanded + paper-menu {
+                height: auto;
+                max-height: 300px;
+            }
+
+            .adminPhoto {
+                text-align: center;
+            }
+
+            .adminPhoto img {
+                width: 183px;
+                height: 177px;
+                display: block;
+                margin-top: 20px;
+            }
+
+        </style>
+        <paper-menu class="list" attr-for-selected="data-route" selected="{{params.page}}">
+            <a ata-route="users" href="/dashboardAdmin/users" on-click="onDataRouteClick">
+                <div class="adminPhoto">
+                    <img src="../../images/pic.png"/>
+                    <h2>Administrator</h2>
+                </div>
+            </a>
+            <a data-route="users" href="/dashboardAdmin/users" on-click="onDataRouteClick">
+                <iron-icon icon="dashboard"></iron-icon>
+                <span>Users</span>
+            </a>
+            <a data-route="transfers" href="/dashboardAdmin/transfers" on-click="onDataRouteClick">
+                <iron-icon icon="chrome-reader-mode"></iron-icon>
+                <span>Transfers</span>
+            </a>
+            <a data-route="settings" href="/dashboardAdmin/settings" on-click="onDataRouteClick">
+                <iron-icon icon="inbox"></iron-icon>
+                <span>Settings</span>
+            </a>
+            <a data-route="logout" href="#" on-click="logoutClick">
+                <iron-icon icon="cancel"></iron-icon>
+                <span>Logout</span>
+            </a>
+        </paper-menu>
+    </template>
+    <script>
+        (function () {
+            'use strict';
+
+            Polymer({
+                is: 'app-admin-menu',
+
+                properties: {
+                    foo: {
+                        type: String,
+                        value: 'app-admin-menu',
+                        notify: true
+                    }
+                },
+
+                logoutClick: function () {
+                    new Firebase(app.location).unauth();
+                    window.location = "/";
+                }
+            });
+        })();
+    </script>
 </dom-module>

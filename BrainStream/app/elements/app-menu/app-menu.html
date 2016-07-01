@@ -122,10 +122,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <iron-icon icon="inbox"></iron-icon>
                             <span>Messages</span>
                         </a>
-                        <!-- <a data-route="charts" href="/dashboard/charts">
-                        <iron-icon icon="android"></iron-icon>
-                                                    <span>Charts</span>
-                                                                  </a> -->
+                        <a data-route="logout" href="#" on-click="logoutClick">
+                            <iron-icon icon="cancel"></iron-icon>
+                            <span>Logout</span>
+                        </a>
                     </paper-menu>
 
                 </div>
@@ -145,6 +145,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         value: 'app-menu',
                         notify: true
                     }
+                },
+
+                logoutClick: function () {
+                    new Firebase(app.location).unauth();
+                    window.location = "/";
                 }
             });
         })();

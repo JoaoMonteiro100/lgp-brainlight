@@ -151,7 +151,7 @@
                             password: this.$.pwinput.value
                         }, function(error, userData) {
                             if(error) {
-                                alert(error);
+                                alert('Error');
                             } else {
                                 self.addPatient();
                                 self.$.newuserform.reset();
