@@ -31,6 +31,7 @@ The framework, **BrainLight**, is be the foundation upon which countless applica
 Below are the release notes for each release so far:
 * [Version 0.5](Releases/0-5.md)
 * [Version 1.0](Releases/1-0.md)
+* [Version 1.1](Releases/1-1.md)
 
 
 ---
